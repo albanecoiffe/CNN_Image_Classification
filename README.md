@@ -18,7 +18,7 @@ It includes:
 
 ## 🖼️ Streamlit Interface
 
-![screenshot.png](https://cnn-classification-images.streamlit.app/)
+[Streamlit Page](https://cnn-classification-images.streamlit.app/)
 
 > The app lets you select any test image, see the prediction, and view full model evaluation.
 
