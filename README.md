@@ -16,6 +16,14 @@ It includes:
 
 ---
 
+## 🖼️ Streamlit Interface
+
+![screenshot.png](https://cnn-classification-images.streamlit.app/)
+
+> The app lets you select any test image, see the prediction, and view full model evaluation.
+
+---
+
 ## 📁 Dataset
 
 Images are organized in a folder structure compatible with `ImageFolder`:
@@ -66,12 +74,3 @@ The app shows:
 - ✅ Class probabilities
 - ✅ Confusion Matrix
 - ✅ Classification Report (Precision / Recall / F1)
-
----
-
-## 🖼️ Streamlit Interface
-
-![screenshot](screenshot.png)
-
-> The app lets you select any test image, see the prediction, and view full model evaluation.
-
