@@ -32,6 +32,7 @@ data/
 🔹🔹 others/
 ```
 Each class contains JPEG and PNG images of varied sizes.
+
 ⚠️ Note: Due to dataset size limits on GitHub, the repository only contains a sample of the test set (Testing_Data/) with 29 images per class for demonstration purposes. The full training set was used locally to train the model, but is not included in the repository.
 ---
 
