@@ -96,7 +96,7 @@ def load_model():
     model2.eval()
     return model2
 
-
+model = load_model()
 
 # -------------------------------
 # Transform and DataLoader
