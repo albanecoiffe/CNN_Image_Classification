@@ -73,24 +73,29 @@ class CNNNet(nn.Module):
 # -------------------------------
 # Load model
 # -------------------------------
-import urllib.request
+import requests
 
 @st.cache_resource
 def load_model():
     model_path = "model2.pt"
     url = "https://huggingface.co/albanecoiffe/cnn-image-classifier/resolve/main/model2.pt"
 
-    # Télécharger le modèle s'il n'est pas déjà là
     if not os.path.exists(model_path):
         with st.spinner("📦 Downloading model from Hugging Face..."):
-            urllib.request.urlretrieve(url, model_path)
+            try:
+                response = requests.get(url)
+                response.raise_for_status()
+                with open(model_path, 'wb') as f:
+                    f.write(response.content)
+            except requests.exceptions.RequestException as e:
+                st.error(f"Download failed: {e}")
+                raise
 
     model2 = CNNNet()
     model2.load_state_dict(torch.load(model_path, map_location=torch.device("cpu")))
     model2.eval()
     return model2
 
-model = load_model()
 
 
 # -------------------------------
