@@ -7,3 +7,4 @@ scikit-learn
 pillow
 numpy
 huggingface_hub
+requests
