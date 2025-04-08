@@ -74,7 +74,6 @@ class CNNNet(nn.Module):
 # Load model
 # -------------------------------
 import requests
-import urllib.request
 
 @st.cache_resource
 def load_model():
@@ -83,7 +82,14 @@ def load_model():
 
     if not os.path.exists(model_path):
         with st.spinner("📦 Downloading model from Hugging Face..."):
-            urllib.request.urlretrieve(url, model_path)
+            try:
+                response = requests.get(url)
+                response.raise_for_status()
+                with open(model_path, 'wb') as f:
+                    f.write(response.content)
+            except requests.exceptions.RequestException as e:
+                st.error(f"❌ Error downloading model: {e}")
+                raise
 
     model2 = CNNNet()
     model2.load_state_dict(torch.load(model_path, map_location=torch.device("cpu")))
