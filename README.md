@@ -66,14 +66,15 @@ self.linear_layers = nn.Sequential(
 
 ---
 
-## 📦 Model Hosting
+### 📦 Model Hosting
 
-To avoid exceeding GitHub's file size limit (100MB), the trained model `model2.pt` is **not stored locally** in this repository.
+To avoid exceeding GitHub's file size limit (100MB), the trained model `model2.pt` is not stored locally in this repository.
 
-> 🔗 Instead, it is automatically **downloaded from Hugging Face** at runtime:  
-> https://huggingface.co/albanecoiffe/cnn-image-classifier
+>🔗 Instead, it is automatically downloaded from **Dropbox** at runtime:  
+>[https://www.dropbox.com/scl/fi/trnom8gqbqhtpt5tp4cky/model2.pt?rlkey=d966aavznow2382wmft2av3k0&st=xt0oju98&dl=1](https://www.dropbox.com/scl/fi/trnom8gqbqhtpt5tp4cky/model2.pt?rlkey=d966aavznow2382wmft2av3k0&st=xt0oju98&dl=1)
 
 This allows the app to run seamlessly, both locally and on Streamlit Cloud.
+
 
 ---
 
