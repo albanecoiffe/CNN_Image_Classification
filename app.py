@@ -73,14 +73,15 @@ class CNNNet(nn.Module):
 # -------------------------------
 # Load model
 # -------------------------------
-url = "https://www.dropbox.com/s/xyz123/model2.pt?dl=1"
-
 import requests
+import torch
+import os
 
 @st.cache_resource
 def load_model():
     model_path = "model2.pt"
-    
+    url = "https://www.dropbox.com/scl/fi/trnom8gqbqhtpt5tp4cky/model2.pt?rlkey=d966aavznow2382wmft2av3k0&st=xt0oju98&dl=1"
+
     if not os.path.exists(model_path):
         with st.spinner("📦 Downloading model from Dropbox..."):
             try:
@@ -93,9 +94,10 @@ def load_model():
                 raise
 
     model2 = CNNNet()
-    model2.load_state_dict(torch.load(model_path, map_location="cpu"))
+    model2.load_state_dict(torch.load(model_path, map_location=torch.device("cpu")))
     model2.eval()
     return model2
+
 
 model = load_model()
 
