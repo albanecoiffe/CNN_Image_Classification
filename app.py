@@ -73,26 +73,29 @@ class CNNNet(nn.Module):
 # -------------------------------
 # Load model
 # -------------------------------
-import gdown
+url = "https://www.dropbox.com/s/xyz123/model2.pt?dl=1"
+
+import requests
 
 @st.cache_resource
 def load_model():
     model_path = "model2.pt"
-    gdrive_id = "1ZO6hNQ-_GqyogNkKSdb_KZBqa55ggUZy"
-
+    
     if not os.path.exists(model_path):
-        with st.spinner("📦 Downloading model from Google Drive via gdown..."):
+        with st.spinner("📦 Downloading model from Dropbox..."):
             try:
-                gdown.download(f"https://drive.google.com/uc?id={gdrive_id}", model_path, quiet=False)
+                response = requests.get(url)
+                response.raise_for_status()
+                with open(model_path, 'wb') as f:
+                    f.write(response.content)
             except Exception as e:
-                st.error(f"❌ Error downloading model: {e}")
+                st.error(f"❌ Download failed: {e}")
                 raise
 
     model2 = CNNNet()
-    model2.load_state_dict(torch.load(model_path, map_location=torch.device("cpu")))
+    model2.load_state_dict(torch.load(model_path, map_location="cpu"))
     model2.eval()
     return model2
-
 
 model = load_model()
 
