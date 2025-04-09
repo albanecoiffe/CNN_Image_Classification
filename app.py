@@ -78,10 +78,10 @@ import requests
 @st.cache_resource
 def load_model():
     model_path = "model2.pt"
-    url = "https://huggingface.co/albanecoiffe/cnn-image-classifier/resolve/main/model2.pt"
+    url = "https://drive.google.com/uc?export=download&id=1ZO6hNQ-_GqyogNkKSdb_KZBqa55ggUZy"
 
     if not os.path.exists(model_path):
-        with st.spinner("📦 Downloading model from Hugging Face..."):
+        with st.spinner("📦 Downloading model from Google Drive..."):
             try:
                 response = requests.get(url)
                 response.raise_for_status()
