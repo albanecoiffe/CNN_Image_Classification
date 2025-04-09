@@ -73,21 +73,18 @@ class CNNNet(nn.Module):
 # -------------------------------
 # Load model
 # -------------------------------
-import requests
+import gdown
 
 @st.cache_resource
 def load_model():
     model_path = "model2.pt"
-    url = "https://drive.google.com/uc?export=download&id=1ZO6hNQ-_GqyogNkKSdb_KZBqa55ggUZy"
+    gdrive_id = "1ZO6hNQ-_GqyogNkKSdb_KZBqa55ggUZy"
 
     if not os.path.exists(model_path):
-        with st.spinner("📦 Downloading model from Google Drive..."):
+        with st.spinner("📦 Downloading model from Google Drive via gdown..."):
             try:
-                response = requests.get(url)
-                response.raise_for_status()
-                with open(model_path, 'wb') as f:
-                    f.write(response.content)
-            except requests.exceptions.RequestException as e:
+                gdown.download(f"https://drive.google.com/uc?id={gdrive_id}", model_path, quiet=False)
+            except Exception as e:
                 st.error(f"❌ Error downloading model: {e}")
                 raise
 
